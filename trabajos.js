@@ -116,7 +116,7 @@ const renderPortfolioPage = async () => {
   });
 
   document.querySelectorAll('.brand-logo').forEach(async (logo) => {
-    logo.src = await contentManager.resolveMediaUrl(config.brand?.logo || 'assets/icon-192.svg');
+    logo.src = await contentManager.resolveMediaUrl(config.brand?.logo || 'assets/logo-fulltech.png');
     logo.alt = `Logo ${config.brand?.fullName || 'FULLTECH SRL'}`;
   });
 

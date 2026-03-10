@@ -65,6 +65,7 @@ const getPolicySlug = (title) => {
 };
 
 const createPolicyHref = (title) => `${POLICY_PAGE_PATH}?policy=${encodeURIComponent(getPolicySlug(title))}`;
+const isMobileViewport = () => window.matchMedia('(max-width: 759px)').matches;
 
 const SERVICE_DETAILS = {
   'sistemas de camaras': {
@@ -223,10 +224,17 @@ const ensureCoverageMap = (mapElement, mapTag) => {
   mapElement.setAttribute('aria-label', mapTag || 'Mapa de cobertura');
 
   if (!coverageMapState.map) {
+    const disableInteraction = isMobileViewport();
     const map = window.L.map(mapElement, {
-      zoomControl: true,
+      zoomControl: !disableInteraction,
       scrollWheelZoom: false,
-      attributionControl: true
+      attributionControl: true,
+      dragging: !disableInteraction,
+      touchZoom: false,
+      doubleClickZoom: false,
+      boxZoom: false,
+      keyboard: false,
+      tap: false
     });
 
     const tileLayer = window.L.tileLayer(COVERAGE_TILE_URL, {
@@ -472,11 +480,17 @@ const renderWorksPageLink = (worksPage) => {
 const renderCoverage = (coverage) => {
   const mapUrl = getCoverageMapUrl(coverage.mapUrl);
   const locations = Array.isArray(coverage.locations) ? coverage.locations : [];
+  const mapLink = document.getElementById('coverage-map-link');
+  const firstLocation = locations.find((location) => !Number.isNaN(Number(location?.lat)) && !Number.isNaN(Number(location?.lng)));
+  const googleMapsUrl = firstLocation
+    ? `https://www.google.com/maps?q=${encodeURIComponent(`${firstLocation.lat},${firstLocation.lng}`)}`
+    : 'https://www.google.com/maps/search/?api=1&query=Higuey%2C%20Republica%20Dominicana';
 
   setText('#coverage-eyebrow', coverage.eyebrow);
   setText('#coverage-title', coverage.title);
   setText('#coverage-intro', coverage.intro);
   setText('#coverage-map-tag', coverage.mapTag);
+  if (mapLink) mapLink.href = googleMapsUrl;
 
   const mapElement = document.getElementById('coverage-map');
   const mapState = ensureCoverageMap(mapElement, coverage.mapTag);
@@ -528,9 +542,8 @@ const renderBrands = (brands) => {
 
   const items = Array.isArray(brands.items) ? brands.items : [];
   const repeatedItems = [...items, ...items];
-
   list.innerHTML = `
-    <div class="brands-track">
+    <div class="brands-track" role="list" aria-label="Marcas disponibles">
       ${repeatedItems
         .map(
           (brand, index) => `
@@ -728,7 +741,7 @@ const setupServiceSheet = (contact) => {
 };
 
 const renderBrand = async (brand) => {
-  const logoUrl = await window.FulltechContentManager.resolveMediaUrl(brand.logo);
+  const logoUrl = await window.FulltechContentManager.resolveMediaUrl(brand.logo || 'assets/logo-fulltech.png');
 
   document.querySelectorAll('.brand-logo').forEach((logo) => {
     logo.src = logoUrl;

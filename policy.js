@@ -163,24 +163,30 @@ const POLICY_LINKS = [
   {
     slug: 'garantia-instalacion',
     title: 'Garantia de instalacion',
-    summary: 'Respaldo sobre montaje, configuracion y entrega funcional.'
+    summary: 'Respaldo sobre montaje, configuracion y entrega funcional.',
+    icon: 'GT'
   },
   {
     slug: 'reembolso',
     title: 'Politica de reembolso',
-    summary: 'Condiciones aplicables antes de la instalacion final.'
+    summary: 'Condiciones aplicables antes de la instalacion final.',
+    icon: 'RB'
   },
   {
     slug: 'soporte-tecnico',
     title: 'Soporte tecnico',
-    summary: 'Diagnostico, ajustes y mantenimiento por agenda.'
+    summary: 'Diagnostico, ajustes y mantenimiento por agenda.',
+    icon: 'ST'
   },
   {
     slug: 'condiciones-servicio',
     title: 'Condiciones de servicio',
-    summary: 'Alcance, coordinacion y reglas generales del servicio.'
+    summary: 'Alcance, coordinacion y reglas generales del servicio.',
+    icon: 'CS'
   }
 ];
+
+const POLICY_UPDATE_LABEL = '10 de marzo de 2026';
 
 const setPolicyText = (selector, value) => {
   const element = document.querySelector(selector);
@@ -208,6 +214,7 @@ const renderPolicyPage = async () => {
     title: matchingItem?.title || fallbackPolicy.title,
     intro: matchingItem?.description || fallbackPolicy.intro
   };
+  const activePolicyLink = POLICY_LINKS.find((item) => item.slug === requestedPolicy) || POLICY_LINKS[0];
 
   document.title = `${resolvedPolicy.title} | FULLTECH SRL`;
 
@@ -219,6 +226,17 @@ const renderPolicyPage = async () => {
   setPolicyText('#policy-breadcrumb-current', resolvedPolicy.title);
   setPolicyText('#policy-side-title', resolvedPolicy.title);
   setPolicyText('#policy-side-copy', resolvedPolicy.intro);
+  setPolicyText('#policy-updated-date', POLICY_UPDATE_LABEL);
+  setPolicyText(
+    '#policy-legal-contact',
+    config.contact?.whatsapp ? `WhatsApp ${config.contact.whatsapp} y contacto directo FULLTECH SRL` : 'WhatsApp y contacto directo FULLTECH SRL'
+  );
+
+  const heroIcon = document.getElementById('policy-hero-icon');
+  if (heroIcon) {
+    heroIcon.textContent = activePolicyLink.icon;
+    heroIcon.setAttribute('data-policy-icon', activePolicyLink.icon);
+  }
 
   const whatsappLink = document.getElementById('policy-whatsapp-link');
   if (whatsappLink) {
@@ -280,8 +298,11 @@ const renderPolicyPage = async () => {
       const activeClass = item.slug === requestedPolicy ? ' is-active' : '';
       return `
         <a class="policy-related-link${activeClass}" href="politica.html?policy=${encodeURIComponent(item.slug)}" aria-current="${item.slug === requestedPolicy ? 'page' : 'false'}">
-          <strong>${escapePolicyHtml(item.title)}</strong>
-          <span>${escapePolicyHtml(item.summary)}</span>
+          <span class="policy-related-icon" data-policy-icon="${escapePolicyHtml(item.icon)}" aria-hidden="true">${escapePolicyHtml(item.icon)}</span>
+          <span class="policy-related-copy">
+            <strong>${escapePolicyHtml(item.title)}</strong>
+            <span>${escapePolicyHtml(item.summary)}</span>
+          </span>
         </a>
       `;
     }).join('');
