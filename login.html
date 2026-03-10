@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Login Administrativo | FULLTECH SRL</title>
+    <meta
+      name="description"
+      content="Acceso administrativo de FULLTECH SRL para gestionar el contenido de la web."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="theme-color" content="#08111f" />
+    <link rel="stylesheet" href="login.css?v=20260310b" />
+    <script defer src="login.js?v=20260310b"></script>
+  </head>
+  <body>
+    <main class="login-shell">
+      <section class="login-card">
+        <p class="eyebrow">Acceso administrativo</p>
+        <h1>Iniciar sesion en FULLTECH SRL</h1>
+        <p class="login-lead">
+          Entra con tus credenciales para administrar textos, imagenes, videos y trabajos realizados de la web.
+        </p>
+
+        <form id="login-form" class="login-form">
+          <label>
+            Usuario
+            <input type="text" id="login-username" name="username" autocomplete="username" required />
+          </label>
+          <label>
+            Contrasena
+            <input type="password" id="login-password" name="password" autocomplete="current-password" required />
+          </label>
+          <button class="login-btn" type="submit" id="login-submit">Entrar</button>
+          <p class="login-status" id="login-status" aria-live="polite"></p>
+        </form>
+
+        <div class="login-links">
+          <a href="index.html">Volver a la web publica</a>
+          <a href="trabajos.html">Ver trabajos realizados</a>
+        </div>
+      </section>
+    </main>
+  </body>
+</html>

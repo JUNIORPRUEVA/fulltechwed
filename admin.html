@@ -1,0 +1,556 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Panel Administrativo | FULLTECH SRL</title>
+    <meta
+      name="description"
+      content="Panel administrativo local para gestionar textos, imagenes, videos y datos comerciales de FULLTECH SRL."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <meta name="theme-color" content="#08111f" />
+    <link rel="stylesheet" href="admin.css?v=20260310b" />
+    <script defer src="content-manager.js?v=20260310b"></script>
+    <script defer src="admin.js?v=20260310b"></script>
+  </head>
+  <body>
+    <header class="admin-topbar">
+      <div class="admin-shell topbar-inner">
+        <div>
+          <p class="eyebrow">Administrador local</p>
+          <h1>Control completo de la web FULLTECH SRL</h1>
+          <p class="lead">
+            Desde aqui puedes cambiar textos, subir imagenes, agregar videos al slider y mantener la configuracion por defecto como base segura.
+          </p>
+        </div>
+        <div class="topbar-actions">
+          <a class="btn btn-ghost" href="index.html">Ver web publica</a>
+          <button class="btn btn-ghost" type="button" id="logout-button">Cerrar sesion</button>
+          <button class="btn btn-primary" type="button" id="save-config">Guardar cambios</button>
+        </div>
+      </div>
+    </header>
+
+    <main class="admin-shell admin-layout">
+      <aside class="admin-sidebar">
+        <nav class="sidebar-nav">
+          <a href="#general">General</a>
+          <a href="#navegacion">Navegacion</a>
+          <a href="#hero">Portada</a>
+          <a href="#galeria">Galeria</a>
+          <a href="#marcas">Marcas</a>
+          <a href="#cobertura">Cobertura</a>
+          <a href="#servicios">Servicios</a>
+          <a href="#confianza">Confianza</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#politicas">Politicas</a>
+          <a href="#contacto">Contacto</a>
+          <a href="#footer">Footer</a>
+        </nav>
+      </aside>
+
+      <section class="admin-content">
+        <div class="panel-actions">
+          <button class="btn btn-secondary" type="button" id="reset-config">Restaurar por defecto</button>
+          <button class="btn btn-secondary" type="button" id="export-config">Exportar respaldo</button>
+          <label class="btn btn-secondary file-btn" for="import-config">Importar respaldo</label>
+          <input id="import-config" type="file" accept="application/json" hidden />
+          <p class="status" id="status-message" aria-live="polite"></p>
+        </div>
+
+        <form id="admin-form" class="admin-form">
+          <section class="panel" id="general">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Marca</p>
+                <h2>Identidad y logo</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Nombre corto
+                <input type="text" id="brand-short-name" />
+              </label>
+              <label>
+                Nombre legal
+                <input type="text" id="brand-full-name" />
+              </label>
+              <label>
+                Subtitulo movil
+                <input type="text" id="brand-mobile-subtitle" />
+              </label>
+              <label>
+                Subtitulo drawer
+                <input type="text" id="brand-drawer-subtitle" />
+              </label>
+              <label class="full-span">
+                Subtitulo footer
+                <input type="text" id="brand-footer-subtitle" />
+              </label>
+              <label class="full-span">
+                URL del logo
+                <input type="url" id="brand-logo-url" placeholder="https://... o assets/icon-192.svg" />
+              </label>
+              <label class="full-span file-input-wrap">
+                Subir nuevo logo
+                <input type="file" id="brand-logo-file" accept="image/*" />
+              </label>
+            </div>
+          </section>
+
+          <section class="panel" id="hero">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Portada</p>
+                <h2>Texto principal y llamadas a la accion</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label class="full-span">
+                Etiqueta superior
+                <input type="text" id="hero-eyebrow-input" />
+              </label>
+              <label class="full-span">
+                Titulo principal
+                <textarea id="hero-title-input" rows="3"></textarea>
+              </label>
+              <label class="full-span">
+                Descripcion principal
+                <textarea id="hero-lead-input" rows="4"></textarea>
+              </label>
+              <label>
+                Texto CTA principal
+                <input type="text" id="hero-primary-text" />
+              </label>
+              <label>
+                URL CTA principal
+                <input type="url" id="hero-primary-href" />
+              </label>
+              <label>
+                Texto CTA secundario
+                <input type="text" id="hero-secondary-text" />
+              </label>
+              <label>
+                URL CTA secundario
+                <input type="text" id="hero-secondary-href" />
+              </label>
+            </div>
+            <div class="dynamic-block">
+              <div class="block-head">
+                <h3>Metricas destacadas</h3>
+                <p>Se muestran debajo del hero.</p>
+              </div>
+              <div id="metrics-editor" class="editor-list"></div>
+            </div>
+          </section>
+
+          <section class="panel" id="navegacion">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Navegacion</p>
+                <h2>Menu superior, drawer y boton flotante</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Menu superior: Trabajos
+                <input type="text" id="nav-desktop-gallery-input" />
+              </label>
+              <label>
+                Menu superior: Cobertura
+                <input type="text" id="nav-desktop-coverage-input" />
+              </label>
+              <label>
+                Menu superior: Servicios
+                <input type="text" id="nav-desktop-services-input" />
+              </label>
+              <label>
+                Menu superior: Politicas
+                <input type="text" id="nav-desktop-policies-input" />
+              </label>
+              <label>
+                Menu superior: Contacto
+                <input type="text" id="nav-desktop-contact-input" />
+              </label>
+              <label>
+                Boton superior
+                <input type="text" id="nav-desktop-cta-input" />
+              </label>
+              <label>
+                Drawer: Trabajos
+                <input type="text" id="nav-drawer-gallery-input" />
+              </label>
+              <label>
+                Drawer: Cobertura
+                <input type="text" id="nav-drawer-coverage-input" />
+              </label>
+              <label>
+                Drawer: Servicios
+                <input type="text" id="nav-drawer-services-input" />
+              </label>
+              <label>
+                Drawer: Proceso
+                <input type="text" id="nav-drawer-process-input" />
+              </label>
+              <label>
+                Drawer: Politicas
+                <input type="text" id="nav-drawer-policies-input" />
+              </label>
+              <label>
+                Drawer: Contacto
+                <input type="text" id="nav-drawer-contact-input" />
+              </label>
+              <label>
+                Boton drawer principal
+                <input type="text" id="nav-drawer-primary-cta-input" />
+              </label>
+              <label>
+                Boton drawer secundario
+                <input type="text" id="nav-drawer-secondary-cta-input" />
+              </label>
+              <label class="full-span">
+                Texto del boton flotante de WhatsApp
+                <input type="text" id="nav-floating-whatsapp-input" />
+              </label>
+            </div>
+          </section>
+
+          <section class="panel" id="galeria">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Galeria principal</p>
+                <h2>Imagenes o videos del slider</h2>
+              </div>
+              <div class="panel-head-actions">
+                <p class="panel-note">Cada slide puede ser imagen o video y tambien se publica en la pagina de trabajos realizados.</p>
+                <a class="btn btn-ghost" href="trabajos.html" target="_blank" rel="noopener noreferrer">Ver pagina de trabajos</a>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Etiqueta superior de la pagina
+                <input type="text" id="works-eyebrow-input" />
+              </label>
+              <label>
+                Texto del boton para ver trabajos
+                <input type="text" id="works-link-text-input" />
+              </label>
+              <label class="full-span">
+                Titulo principal de la pagina
+                <input type="text" id="works-title-input" />
+              </label>
+              <label class="full-span">
+                Introduccion de la pagina
+                <textarea id="works-intro-input" rows="3"></textarea>
+              </label>
+              <label>
+                Texto para volver al inicio
+                <input type="text" id="works-back-home-input" />
+              </label>
+              <label>
+                Mensaje cuando no hay trabajos
+                <input type="text" id="works-empty-message-input" />
+              </label>
+            </div>
+            <div class="block-head">
+              <h3>Trabajos publicados</h3>
+              <button class="btn btn-secondary" type="button" id="add-gallery-item">Agregar trabajo</button>
+            </div>
+            <div id="gallery-editor" class="editor-list"></div>
+          </section>
+
+          <section class="panel" id="marcas">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Marcas</p>
+                <h2>Seccion de marcas y respaldo comercial</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Etiqueta superior
+                <input type="text" id="brands-eyebrow-input" />
+              </label>
+              <label class="full-span">
+                Titulo
+                <input type="text" id="brands-title-input" />
+              </label>
+              <label class="full-span">
+                Introduccion
+                <textarea id="brands-intro-input" rows="3"></textarea>
+              </label>
+            </div>
+            <div id="brands-editor" class="editor-list"></div>
+          </section>
+
+          <section class="panel" id="cobertura">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Cobertura</p>
+                <h2>Mapa y provincias atendidas</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Etiqueta superior
+                <input type="text" id="coverage-eyebrow-input" />
+              </label>
+              <label>
+                Etiqueta del mapa
+                <input type="text" id="coverage-map-tag-input" />
+              </label>
+              <label class="full-span">
+                Titulo
+                <input type="text" id="coverage-title-input" />
+              </label>
+              <label class="full-span">
+                Introduccion
+                <textarea id="coverage-intro-input" rows="3"></textarea>
+              </label>
+              <label class="full-span">
+                URL del mapa embebido
+                <textarea id="coverage-map-url-input" rows="3"></textarea>
+              </label>
+            </div>
+            <div id="coverage-editor" class="editor-list"></div>
+            <div class="dynamic-block">
+              <div class="block-head">
+                <h3>Puntos del mapa</h3>
+                <p>Estos nombres y coordenadas se usan para marcar el mapa visible en la web.</p>
+              </div>
+              <div id="coverage-locations-editor" class="editor-list"></div>
+            </div>
+          </section>
+
+          <section class="panel" id="servicios">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Servicios</p>
+                <h2>Catalogo comercial</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Etiqueta superior
+                <input type="text" id="services-eyebrow-input" />
+              </label>
+              <label class="full-span">
+                Titulo
+                <input type="text" id="services-title-input" />
+              </label>
+              <label class="full-span">
+                Introduccion
+                <textarea id="services-intro-input" rows="3"></textarea>
+              </label>
+            </div>
+            <div id="services-editor" class="editor-list"></div>
+          </section>
+
+          <section class="panel" id="confianza">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Confianza</p>
+                <h2>Bloque comercial y prueba social</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Etiqueta superior
+                <input type="text" id="trust-eyebrow-input" />
+              </label>
+              <label class="full-span">
+                Titulo
+                <input type="text" id="trust-title-input" />
+              </label>
+              <label class="full-span">
+                Frase destacada
+                <textarea id="quote-text-input" rows="3"></textarea>
+              </label>
+              <label>
+                Autor
+                <input type="text" id="quote-author-input" />
+              </label>
+              <label>
+                Cargo o descripcion
+                <input type="text" id="quote-role-input" />
+              </label>
+            </div>
+            <div id="trust-editor" class="editor-list"></div>
+          </section>
+
+          <section class="panel" id="proceso">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Proceso</p>
+                <h2>Pasos de trabajo</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Etiqueta superior
+                <input type="text" id="process-eyebrow-input" />
+              </label>
+              <label class="full-span">
+                Titulo
+                <input type="text" id="process-title-input" />
+              </label>
+            </div>
+            <div id="process-editor" class="editor-list"></div>
+          </section>
+
+          <section class="panel" id="politicas">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Politicas</p>
+                <h2>Garantia, reembolso y soporte</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Etiqueta superior
+                <input type="text" id="policies-eyebrow-input" />
+              </label>
+              <label class="full-span">
+                Titulo
+                <input type="text" id="policies-title-input" />
+              </label>
+            </div>
+            <div id="policies-editor" class="editor-list"></div>
+          </section>
+
+          <section class="panel" id="contacto">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Contacto</p>
+                <h2>Datos comerciales y cierre</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Etiqueta superior
+                <input type="text" id="contact-eyebrow-input" />
+              </label>
+              <label class="full-span">
+                Titulo
+                <input type="text" id="contact-title-input" />
+              </label>
+              <label class="full-span">
+                Introduccion
+                <textarea id="contact-intro-input" rows="3"></textarea>
+              </label>
+              <label>
+                WhatsApp
+                <input type="text" id="contact-whatsapp-input" />
+              </label>
+              <label>
+                Texto WhatsApp
+                <input type="text" id="contact-whatsapp-text-input" />
+              </label>
+              <label>
+                Telefono
+                <input type="text" id="contact-phone-input" />
+              </label>
+              <label>
+                Texto boton telefono
+                <input type="text" id="contact-phone-label-input" />
+              </label>
+              <label>
+                Correo
+                <input type="email" id="contact-email-input" />
+              </label>
+              <label>
+                Texto boton correo
+                <input type="text" id="contact-email-label-input" />
+              </label>
+              <label>
+                Texto boton WhatsApp
+                <input type="text" id="contact-whatsapp-label-input" />
+              </label>
+              <label class="full-span">
+                Ubicacion visible
+                <input type="text" id="contact-location-input" />
+              </label>
+            </div>
+          </section>
+
+          <section class="panel" id="footer">
+            <div class="panel-head">
+              <div>
+                <p class="eyebrow">Footer</p>
+                <h2>Bloque inferior y mensaje legal</h2>
+              </div>
+            </div>
+            <div class="grid two-cols">
+              <label>
+                Titulo columna enlaces
+                <input type="text" id="footer-links-heading-input" />
+              </label>
+              <label>
+                Titulo columna politicas
+                <input type="text" id="footer-policies-heading-input" />
+              </label>
+              <label>
+                Titulo columna contacto
+                <input type="text" id="footer-contact-heading-input" />
+              </label>
+              <label>
+                Texto WhatsApp del footer
+                <input type="text" id="footer-whatsapp-label-input" />
+              </label>
+              <label>
+                Enlace footer: Trabajos
+                <input type="text" id="footer-link-gallery-input" />
+              </label>
+              <label>
+                Enlace footer: Cobertura
+                <input type="text" id="footer-link-coverage-input" />
+              </label>
+              <label>
+                Enlace footer: Servicios
+                <input type="text" id="footer-link-services-input" />
+              </label>
+              <label>
+                Enlace footer: Contacto
+                <input type="text" id="footer-link-contact-input" />
+              </label>
+              <label>
+                Politica: Garantia
+                <input type="text" id="footer-policy-warranty-input" />
+              </label>
+              <label>
+                Politica: Reembolso
+                <input type="text" id="footer-policy-refund-input" />
+              </label>
+              <label>
+                Politica: Soporte tecnico
+                <input type="text" id="footer-policy-support-input" />
+              </label>
+              <label>
+                Politica: Condiciones de servicio
+                <input type="text" id="footer-policy-terms-input" />
+              </label>
+              <label class="full-span">
+                Texto enlace panel administrativo
+                <input type="text" id="footer-admin-link-input" />
+              </label>
+              <label class="full-span">
+                Descripcion del footer
+                <textarea id="footer-description-input" rows="3"></textarea>
+              </label>
+              <label class="full-span">
+                Texto legal
+                <textarea id="footer-legal-input" rows="3"></textarea>
+              </label>
+            </div>
+          </section>
+        </form>
+      </section>
+    </main>
+  </body>
+</html>

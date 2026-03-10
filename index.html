@@ -1,0 +1,334 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>FULLTECH SRL | Sistemas de Seguridad Inteligente</title>
+    <meta
+      name="description"
+      content="FULLTECH SRL instala y mantiene sistemas de seguridad: cámaras, cerco eléctrico, intercom, alarmas y motores de portones. Atención rápida, instalación profesional y soporte técnico confiable."
+    />
+    <meta name="theme-color" content="#08111f" />
+    <meta name="apple-mobile-web-app-capable" content="yes" />
+    <meta name="apple-mobile-web-app-status-bar-style" content="black-translucent" />
+    <meta name="apple-mobile-web-app-title" content="FULLTECH SRL" />
+
+    <meta property="og:title" content="FULLTECH SRL | Seguridad que inspira confianza" />
+    <meta
+      property="og:description"
+      content="Protegemos hogares y empresas con tecnología moderna y un servicio técnico de alto nivel."
+    />
+    <meta property="og:type" content="website" />
+    <meta property="og:image" content="assets/icon-512.svg" />
+
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Manrope:wght@400;500;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="manifest" href="manifest.webmanifest" />
+    <link rel="icon" href="assets/icon-192.svg" type="image/svg+xml" />
+    <link rel="apple-touch-icon" href="assets/icon-192.svg" />
+    <link rel="preload" href="styles.css" as="style" />
+    <link
+      rel="stylesheet"
+      href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css"
+      integrity="sha256-p4NxAoJBhIIN+hmNHrzRCf9tD/miZyoHS5obTRR9BMY="
+      crossorigin=""
+    />
+    <link rel="stylesheet" href="styles.css?v=20260310j" />
+    <script defer src="content-manager.js?v=20260310j"></script>
+    <script
+      defer
+      src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"
+      integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo="
+      crossorigin=""
+    ></script>
+    <script defer src="app.js?v=20260310j"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#contenido">Saltar al contenido</a>
+
+    <header class="topbar">
+      <div class="container nav-shell">
+        <div class="nav-mobile">
+          <button class="menu-toggle" type="button" aria-expanded="false" aria-controls="mobile-drawer" aria-label="Abrir menú">
+            <span class="menu-toggle-box" aria-hidden="true">
+              <span></span>
+              <span></span>
+              <span></span>
+            </span>
+          </button>
+          <a class="brand" href="#inicio" aria-label="Ir al inicio">
+            <span class="brand-mark" aria-hidden="true">
+              <span class="brand-mark-flag"></span>
+            </span>
+            <span class="brand-copy">
+              <strong data-brand-name>FULLTECH</strong>
+              <small data-brand-mobile-subtitle>Seguridad SRL</small>
+            </span>
+          </a>
+          <span class="topbar-chip" aria-label="República Dominicana" title="República Dominicana">
+            <span class="topbar-flag" aria-hidden="true"></span>
+          </span>
+        </div>
+
+        <nav class="nav-desktop" aria-label="Navegación principal">
+          <a id="nav-link-gallery" href="trabajos.html">Ver trabajos realizados</a>
+          <a id="nav-link-coverage" href="#cobertura">Cobertura</a>
+          <a id="nav-link-services" href="#servicios">Servicios</a>
+          <a id="nav-link-policies" href="#politicas">Políticas</a>
+          <a id="nav-link-contact" href="#contacto">Contacto</a>
+          <a id="nav-desktop-cta" class="btn btn-solid" data-whatsapp-link href="https://wa.me/8295344286" target="_blank" rel="noopener noreferrer">Cotizar ahora</a>
+        </nav>
+      </div>
+    </header>
+
+    <aside class="drawer" id="mobile-drawer" aria-hidden="true">
+      <div class="drawer-panel">
+        <div class="drawer-head">
+          <a class="brand brand-drawer" href="#inicio" aria-label="Ir al inicio">
+            <span class="brand-mark" aria-hidden="true">
+              <span class="brand-mark-flag"></span>
+            </span>
+            <span class="brand-copy">
+              <strong data-brand-name>FULLTECH</strong>
+              <small data-brand-drawer-subtitle>Protección inteligente</small>
+            </span>
+          </a>
+          <button class="drawer-close" type="button" aria-label="Cerrar menú">×</button>
+        </div>
+        <nav class="drawer-nav" aria-label="Menú móvil">
+          <a id="drawer-link-gallery" href="trabajos.html">Ver trabajos realizados</a>
+          <a id="drawer-link-coverage" href="#cobertura">Mapa de cobertura</a>
+          <a id="drawer-link-services" href="#servicios">Ver productos y servicios</a>
+          <a id="drawer-link-process" href="#proceso">Cómo trabajamos</a>
+          <a id="drawer-link-policies" href="#politicas">Garantía y reembolso</a>
+          <a id="drawer-link-contact" href="#contacto">Hablar con un asesor</a>
+          <a id="drawer-link-login" href="login.html">Iniciar sesión</a>
+        </nav>
+        <div class="drawer-cta">
+          <a id="drawer-primary-cta" class="btn btn-solid" data-whatsapp-link href="https://wa.me/8295344286" target="_blank" rel="noopener noreferrer">WhatsApp directo</a>
+          <a id="drawer-secondary-cta" class="btn btn-outline" data-phone-link href="tel:8096906440">Llamar ahora</a>
+        </div>
+      </div>
+    </aside>
+    <div class="drawer-backdrop" hidden></div>
+
+    <main id="contenido">
+      <section class="showcase" id="inicio">
+        <div class="container showcase-grid">
+          <div class="showcase-copy">
+            <p class="eyebrow" id="hero-eyebrow">Seguridad profesional para hogares, villas, negocios y condominios</p>
+            <h1 id="hero-title">Instalamos soluciones reales para proteger lo que más valoras</h1>
+            <p class="lead" id="hero-lead">
+              FULLTECH SRL vende, instala y da mantenimiento a sistemas de seguridad con atención rápida,
+              marcas reconocidas y cobertura en la zona Este de República Dominicana.
+            </p>
+            <div class="hero-cta">
+              <a class="btn btn-solid" id="hero-primary-cta" href="https://wa.me/8295344286?text=Hola%20FULLTECH%20SRL%2C%20quiero%20una%20cotizaci%C3%B3n." target="_blank" rel="noopener noreferrer">Solicitar cotización</a>
+              <a class="btn btn-outline" id="hero-secondary-cta" href="#servicios">Ver servicios</a>
+            </div>
+            <div class="metrics" id="metrics-list" role="list" aria-label="Indicadores destacados"></div>
+          </div>
+
+          <section class="slider" id="galeria" aria-label="Galería de trabajos y soluciones de seguridad">
+            <div class="slides" id="slider-track" data-slider-track></div>
+
+            <div class="slider-controls">
+              <button class="slider-btn" type="button" data-slider-prev aria-label="Imagen anterior">‹</button>
+              <div class="slider-dots" data-slider-dots aria-label="Indicadores del carrusel"></div>
+              <button class="slider-btn" type="button" data-slider-next aria-label="Imagen siguiente">›</button>
+            </div>
+          </section>
+        </div>
+      </section>
+
+      <section class="section brands-section" id="marcas">
+        <div class="container">
+          <p class="section-intro brands-intro-line" id="brands-intro">
+            Trabajamos con las siguientes marcas
+          </p>
+          <div class="brands-grid" id="brands-list" role="list"></div>
+        </div>
+      </section>
+
+      <section class="section coverage" id="cobertura">
+        <div class="container coverage-grid">
+          <div class="coverage-copy">
+            <p class="eyebrow" id="coverage-eyebrow">Mapa de cobertura</p>
+            <h2 id="coverage-title">Cobertura por tipo de servicio</h2>
+            <p class="section-intro" id="coverage-intro">
+              Instalaciones: Higüey, Bávaro, Punta Cana, La Romana, Miches y zonas cercanas. Mantenimiento y visita técnica de preinstalación: Higüey, Otra Banda y zonas cercanas. Todo servicio se coordina por agenda previa.
+            </p>
+            <div class="coverage-list" id="coverage-list" role="list"></div>
+          </div>
+
+          <div class="map-card">
+            <div
+              id="coverage-map"
+              class="coverage-map-canvas"
+              role="img"
+              aria-label="Mapa de cobertura de FULLTECH SRL"
+            ></div>
+            <iframe
+              id="coverage-map-fallback"
+              class="coverage-map-fallback"
+              title="Mapa de cobertura de FULLTECH SRL"
+              loading="lazy"
+              referrerpolicy="no-referrer-when-downgrade"
+              hidden
+            ></iframe>
+            <div class="map-tag" id="coverage-map-tag">Mapa de instalaciones FULLTECH SRL</div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="servicios">
+        <div class="container">
+          <p class="eyebrow" id="services-eyebrow">Soluciones de seguridad</p>
+          <h2 id="services-title">Servicios para proteger hogares, negocios y proyectos</h2>
+          <p class="section-intro" id="services-intro">
+            Te ayudamos a elegir e instalar la solucion ideal para vigilar, controlar accesos y reforzar la seguridad de tu propiedad.
+          </p>
+          <div class="cards" id="services-list"></div>
+        </div>
+      </section>
+
+      <div class="service-sheet" id="service-sheet" hidden aria-hidden="true">
+        <button class="service-sheet-backdrop" type="button" data-service-sheet-close aria-label="Cerrar detalle"></button>
+        <section class="service-sheet-panel" role="dialog" aria-modal="true" aria-labelledby="service-sheet-title">
+          <button class="service-sheet-close" id="service-sheet-close" type="button" aria-label="Cerrar detalle">×</button>
+          <div class="service-sheet-media-wrap">
+            <img id="service-sheet-image" src="" alt="" width="960" height="600" />
+          </div>
+          <div class="service-sheet-body">
+            <p class="eyebrow" id="service-sheet-eyebrow">Detalle del servicio</p>
+            <h3 id="service-sheet-title">Servicio</h3>
+            <p class="service-sheet-lead" id="service-sheet-description"></p>
+            <div class="service-sheet-highlight" id="service-sheet-highlight"></div>
+            <ul class="service-sheet-points" id="service-sheet-points" role="list"></ul>
+            <div class="service-sheet-meta">
+              <div class="service-sheet-meta-card">
+                <small>Marcas compatibles</small>
+                <span id="service-sheet-brands"></span>
+              </div>
+              <div class="service-sheet-meta-card">
+                <small>Disponibilidad</small>
+                <span id="service-sheet-schedule"></span>
+              </div>
+            </div>
+            <div class="service-sheet-actions">
+              <a class="btn btn-solid" id="service-sheet-whatsapp" href="https://wa.me/8295344286" target="_blank" rel="noopener noreferrer">Solicitar por WhatsApp</a>
+              <a class="btn btn-outline" id="service-sheet-phone" href="tel:8096906440">Llamar ahora</a>
+            </div>
+          </div>
+        </section>
+      </div>
+
+      <section class="section trust-section">
+        <div class="container trust-grid">
+          <article class="trust-panel">
+            <p class="eyebrow" id="trust-eyebrow">Por que elegir FULLTECH</p>
+            <h2 id="trust-title">Atencion clara, respaldo local y soluciones confiables</h2>
+            <ul class="trust-points" id="trust-points" role="list"></ul>
+          </article>
+          <article class="quote-card">
+            <p id="quote-text">"Protegemos lo que mas valoras con orientacion clara, instalacion profesional y atencion confiable."</p>
+            <strong id="quote-author">FULLTECH SRL</strong>
+            <span id="quote-role">Soluciones de seguridad para la zona Este</span>
+          </article>
+        </div>
+      </section>
+
+      <section class="section section-dark" id="proceso">
+        <div class="container">
+          <p class="eyebrow eyebrow-dark" id="process-eyebrow">Como trabajamos</p>
+          <h2 id="process-title">Te acompanamos desde la orientacion hasta la instalacion</h2>
+          <div class="steps" id="process-steps" role="list"></div>
+        </div>
+      </section>
+
+      <section class="section policies" id="politicas">
+        <div class="container">
+          <p class="eyebrow" id="policies-eyebrow">Políticas claras</p>
+          <h2 id="policies-title">Garantía, reembolso y condiciones explicadas de forma profesional</h2>
+          <div class="policy-grid" id="policies-list"></div>
+        </div>
+      </section>
+
+      <section class="section contact-section" id="contacto">
+        <div class="container contact-wrap">
+          <div>
+            <p class="eyebrow" id="contact-eyebrow">Habla con nosotros</p>
+            <h2 id="contact-title">Solicita tu cotizacion y recibe orientacion personalizada</h2>
+            <p class="section-intro" id="contact-intro">Atendemos por WhatsApp, llamada y correo para cotizaciones rápidas. Instalamos en las zonas marcadas del mapa y el mantenimiento o visita técnica de preinstalación se agenda solo para Higüey, Otra Banda y zonas cercanas.</p>
+          </div>
+          <div class="contact-actions">
+            <a class="btn btn-solid" id="contact-whatsapp" href="https://wa.me/8295344286" target="_blank" rel="noopener noreferrer">WhatsApp</a>
+            <a class="btn btn-outline" id="contact-phone" href="tel:8096906440">Llamar</a>
+            <a class="btn btn-outline" id="contact-email" href="mailto:fulltechsd@gmail.com">Correo</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <a
+      class="wa-float"
+      id="wa-float-link"
+      href="https://wa.me/8295344286?text=Hola%20FULLTECH%20SRL%2C%20quiero%20una%20cotizaci%C3%B3n%20de%20sistemas%20de%20seguridad."
+      target="_blank"
+      rel="noopener noreferrer"
+      aria-label="Contactar por WhatsApp"
+    >
+      <img src="assets/whatsapp.svg" width="20" height="20" alt="" aria-hidden="true" />
+      <span id="wa-float-label">WhatsApp</span>
+    </a>
+
+    <footer class="footer">
+      <div class="container footer-grid">
+        <div class="footer-brand-block">
+          <a class="brand footer-brand" href="#inicio" aria-label="Ir al inicio">
+            <img class="brand-logo" src="assets/icon-192.svg" alt="Logo FULLTECH SRL" width="56" height="56" />
+            <span class="brand-copy">
+              <strong data-brand-full-name>FULLTECH SRL</strong>
+              <small data-brand-footer-subtitle>Sistemas de seguridad inteligente</small>
+            </span>
+          </a>
+          <p id="footer-description">
+            Instalación, mantenimiento y venta de soluciones de seguridad para hogares, negocios, villas y proyectos empresariales.
+          </p>
+        </div>
+
+        <div>
+          <h3 id="footer-links-heading">Enlaces</h3>
+          <a id="footer-link-gallery" href="trabajos.html">Trabajos</a>
+          <a id="footer-link-coverage" href="#cobertura">Cobertura</a>
+          <a id="footer-link-services" href="#servicios">Servicios</a>
+          <a id="footer-link-contact" href="#contacto">Contacto</a>
+        </div>
+
+        <div>
+          <h3 id="footer-policies-heading">Políticas</h3>
+          <a id="footer-policy-warranty" href="politica.html?policy=garantia-instalacion">Garantía</a>
+          <a id="footer-policy-refund" href="politica.html?policy=reembolso">Reembolso</a>
+          <a id="footer-policy-support" href="politica.html?policy=soporte-tecnico">Soporte técnico</a>
+          <a id="footer-policy-terms" href="politica.html?policy=condiciones-servicio">Condiciones de servicio</a>
+        </div>
+
+        <div>
+          <h3 id="footer-contact-heading">Contacto</h3>
+          <a id="footer-phone" href="tel:8096906440">809 690 6440</a>
+          <a id="footer-whatsapp" href="https://wa.me/8295344286" target="_blank" rel="noopener noreferrer">WhatsApp comercial</a>
+          <a id="footer-email" href="mailto:fulltechsd@gmail.com">fulltechsd@gmail.com</a>
+          <p id="footer-location">Higüey, Bávaro, Punta Cana, La Romana, Miches y zonas cercanas</p>
+        </div>
+      </div>
+      <div class="container footer-bottom">
+        <p>© <span id="year"></span> FULLTECH SRL. Todos los derechos reservados.</p>
+        <p id="footer-legal">FULLTECH SRL | Garantía, soporte, mantenimiento y atención profesional.</p>
+      </div>
+    </footer>
+  </body>
+</html>

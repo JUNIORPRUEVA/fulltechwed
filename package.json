@@ -1,0 +1,20 @@
+{
+  "name": "fulltechwedside",
+  "version": "1.0.0",
+  "description": "Sitio web PWA rápido y optimizado para móvil para venta de servicios de seguridad.",
+  "main": "server.js",
+  "scripts": {
+    "start": "node server.js",
+    "db:bootstrap": "node scripts/bootstrap-db.js",
+    "dev": "node server.js",
+    "test": "echo \"No tests configured\""
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "dotenv": "^17.3.1",
+    "express": "^5.2.1",
+    "pg": "^8.20.0"
+  }
+}

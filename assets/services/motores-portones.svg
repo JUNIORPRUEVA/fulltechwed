@@ -1,0 +1,16 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Motor para portones">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#071325"/>
+      <stop offset="1" stop-color="#0f4fcb"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#bg)"/>
+  <rect x="120" y="130" width="720" height="340" rx="24" fill="#eaf2ff"/>
+  <rect x="190" y="190" width="410" height="220" rx="16" fill="#d3e4ff"/>
+  <path d="M225 220h340M225 260h340M225 300h340M225 340h340" stroke="#89afff" stroke-width="8" stroke-linecap="round"/>
+  <rect x="625" y="220" width="150" height="150" rx="20" fill="#0b5cff"/>
+  <circle cx="700" cy="295" r="38" fill="#f2f6ff"/>
+  <circle cx="700" cy="295" r="16" fill="#0a2f73"/>
+  <path d="M700 220v-40M760 300h40M700 410v40M640 300h-40" stroke="#2e7dff" stroke-width="12" stroke-linecap="round"/>
+</svg>

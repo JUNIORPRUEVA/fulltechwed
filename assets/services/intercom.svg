@@ -1,0 +1,20 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Intercomunicador">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1533"/>
+      <stop offset="1" stop-color="#1454d8"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#bg)"/>
+  <rect x="300" y="100" width="360" height="400" rx="30" fill="#f4f8ff"/>
+  <rect x="350" y="150" width="260" height="160" rx="20" fill="#d8e6ff"/>
+  <circle cx="480" cy="230" r="42" fill="#7aa6ff"/>
+  <circle cx="480" cy="230" r="18" fill="#0a2f73"/>
+  <rect x="355" y="345" width="250" height="24" rx="10" fill="#cadcff"/>
+  <rect x="355" y="382" width="250" height="24" rx="10" fill="#cadcff"/>
+  <circle cx="480" cy="450" r="26" fill="#0b5cff"/>
+  <path d="M172 290c55 0 55-90 110-90" stroke="#8fc2ff" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M152 330c95 0 95-130 190-130" stroke="#8fc2ff" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.8"/>
+  <path d="M788 290c-55 0-55-90-110-90" stroke="#8fc2ff" stroke-width="10" fill="none" stroke-linecap="round"/>
+  <path d="M808 330c-95 0-95-130-190-130" stroke="#8fc2ff" stroke-width="8" fill="none" stroke-linecap="round" opacity="0.8"/>
+</svg>

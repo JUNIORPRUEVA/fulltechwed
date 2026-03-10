@@ -1,0 +1,22 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 960 600" role="img" aria-label="Sistema de cámaras">
+  <defs>
+    <linearGradient id="bg" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#0a1a3f"/>
+      <stop offset="1" stop-color="#0b5cff"/>
+    </linearGradient>
+    <linearGradient id="glass" x1="0" y1="0" x2="1" y2="1">
+      <stop offset="0" stop-color="#dbe8ff"/>
+      <stop offset="1" stop-color="#7fb2ff"/>
+    </linearGradient>
+  </defs>
+  <rect width="960" height="600" fill="url(#bg)"/>
+  <rect x="90" y="100" width="780" height="420" rx="22" fill="#0b1229" opacity="0.35"/>
+  <rect x="200" y="220" width="420" height="110" rx="24" fill="#f5f9ff"/>
+  <rect x="580" y="235" width="145" height="80" rx="16" fill="#f5f9ff"/>
+  <circle cx="650" cy="275" r="35" fill="url(#glass)"/>
+  <circle cx="650" cy="275" r="16" fill="#0a2f73"/>
+  <rect x="255" y="332" width="36" height="82" rx="12" fill="#d7e4ff"/>
+  <rect x="522" y="332" width="36" height="82" rx="12" fill="#d7e4ff"/>
+  <circle cx="760" cy="175" r="48" fill="#2e7dff" opacity="0.8"/>
+  <path d="M760 130v90M715 175h90" stroke="#fff" stroke-width="14" stroke-linecap="round"/>
+</svg>
